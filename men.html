@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Men-clothing</title>
+    <link rel="stylesheet" href="men.css" />
+    <link
+      rel="icon"
+      href="image/icon/1486506235-groceries-online-shopping-cart-e-commerce-shopping-cart_81445.ico"
+      type="image/png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section class="maincontainer" id="maining"> 
+    <header>
+      <section class="head">
+        <h1>EL-Nasr Clothing</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="New Arrivals.html">New Arrivals</a></li>
+         
+          </ul>
+        </nav>
+        <div class="icon-profile">
+          <button id="profileing" class="icon-btn">
+            <i class="fa-solid fa-user"></i>
+          </button>
+          <button class="icon-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+          <button class="icon-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </section>
+      <section class="hero">
+        <div class="hero-text">
+          <h2>Men Clothing</h2>
+          <p>Shop the latest fashion trends online.</p>
+          <p>Get <span>50% </span>off on your first purchase</p>
+          <button>Shop Now</button>
+        </div>
+        <img src="image/img/pexels-gustavo-fring-6050421.jpg" alt="" />
+      </section>
+    </header>
+    <main>
+      <section class="tshirt_jacket">
+        <h2 class="title">T-Shirt & Shirt</h2>
+        <div class="products-container" id="tshirt_jacket_container"></div>
+      </section>
+      <section class="watch">
+        <h2 class="title">hand Watch</h2>
+        <div class="products-container" id="watch_container"></div>
+      </section>
+      <section class="shoes">
+        <h2 class="title">Shoes</h2>
+        <div class="products-container" id="shoes_container"></div>
+      </section>
+    </main>
+    <footer>
+      <section class="advertise">
+        <div class="adver">
+          <p>Many offers and discounts are waiting for you</p>
+          <p>Shop the latest fashion trends online</p>
+          <p>Get <span>50% </span>off on your first purchase</p>
+          <button id="adver">Sign Up Now</button>
+        </div>
+        <img src="image/img/offer.jpg" alt="offer" aria-label="img" />
+      </section>
+    </footer>
+</section>
+<section class="sign up" style="display: none" id="signup">
+  <div class="container">
+    <div class="image-section">
+      <h2>welcome to my website</h2>
+      <button class="back-btn">
+        <a href="index.html">Back to website</a>
+      </button>
+    </div>
+    <div class="form-section">
+      <h2>Create an account</h2>
+      <p>
+        Already have an account? <a href="#" class="log" id="logy">Login</a>
+      </p>
+      <form>
+        <div class="input-group">
+          <input type="text" placeholder="First name" required />
+          <input type="text" placeholder="Last name" required />
+        </div>
+        <input type="email" placeholder="Enter your email" required />
+        <input type="password" placeholder="Enter your password" required />
+        <label
+          ><input type="checkbox" required /> I agree to the Terms &
+          Conditions</label
+        >
+        <button type="submit">Create account</button>
+        <div class="social-login">
+          <button class="google">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+            />
+            Google
+          </button>
+          <button class="apple">
+            <img src="social_apple_mac_65.ico" alt="Apple" />
+            Apple
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+    <script>
+      function displayProducts(products, containerSelector) {
+        const container = document.querySelector(containerSelector);
+        container.innerHTML = products
+          .map(
+            (product) => `
+    <div class="product-card">
+      <img src="${product.thumbnail}" alt="${product.title}">
+      <h3>${product.title}</h3>
+      <p>${product.price} $</p>
+      <a href="product.html?id=${product.id}&source=dummyjson" class="buy-btn">Buy Now</a>
+    </div>
+  `
+          )
+          .join("");
+      }
+
+      // جلب قمصان الرجال
+      fetch("https://dummyjson.com/products/category/mens-shirts?limit=20")
+        .then((res) => res.json())
+        .then((data) =>
+          displayProducts(data.products, "#tshirt_jacket_container")
+        );
+
+      // جلب ساعات اليد
+      fetch("https://dummyjson.com/products/category/mens-watches")
+        .then((res) => res.json())
+        .then((data) => displayProducts(data.products, "#watch_container"));
+
+      // جلب أحذية رجالي
+      fetch("https://dummyjson.com/products/category/mens-shoes?limit=8")
+        .then((res) => res.json())
+        .then((data) => displayProducts(data.products, "#shoes_container"))
+        .catch((error) => console.error("خطأ في جلب أحذية رجالي:", error));
+
+      let profile = document.getElementById("profileing");
+      let main = document.getElementById("maining");
+      let signup = document.getElementById("signup");
+      let adevr = document.getElementById("adver");
+
+      profile.addEventListener("click", () => {
+        main.style.display = "none";
+        signup.style.display = "block";
+       
+      });
+      adevr.addEventListener("click", () => {
+        main.style.display = "none";
+        signup.style.display = "block";
+      });
+    </script>
+  </body>
+</html>

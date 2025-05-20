@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="E-Commerce website for Men’s, Women’s, and Kids’ clothing products. Shop the latest fashion trends online."
+    />
+
+    <meta
+      name="keywords"
+      content="E-Commerce, Online Store, Clothing, Fashion, Men, Women, Kids, Shopping, EL-Nasr"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="author" content="Ahmed Elsayed" />
+    <link
+      rel="icon"
+      href="image/icon/1486506235-groceries-online-shopping-cart-e-commerce-shopping-cart_81445.ico"
+      type="image/png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>EL-Nasr Clothing</title>
+  </head>
+  <body>
+    <section class="main-contect" id="main-contect">
+      <header>
+        <section class="head">
+          <h1>EL-Nasr Clothing</h1>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="men.html">Men</a></li>
+              <li><a href="women.html">Women</a></li>
+              <li><a href="New Arrivals.html">New Arrivals</a></li>
+            </ul>
+          </nav>
+          <div class="icon-profile">
+            <button id="profileing" class="icon-btn">
+              <i class="fa-solid fa-user"></i>
+            </button>
+            <button class="icon-btn">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <button class="icon-btn"> 
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </section>
+        <section class="slider">
+          <div class="r-slide">
+            <h2>Welcome to <span>EL-Nasr Clothing</span></h2>
+            <p>Shop the latest fashion trends online.</p>
+            <button id="join">join Now</button>
+          </div>
+          <div class="slideshow-container">
+            <div class="slide fade">
+              <img
+                src="image/img/pexels-gustavo-fring-6050421.jpg"
+                alt="men clothing"
+              />
+            </div>
+
+            <div class="slide fade">
+              <img
+                src="image/img/pexels-hngstrm-1233648.jpg"
+                alt="women clothing"
+              />
+            </div>
+
+            <div class="slide fade">
+              <img
+                src="image/img/pexels-srinivas-1058140.jpg"
+                alt="kids clothing"
+              />
+            </div>
+
+            <div class="slide fade">
+              <img
+                src="image/img/pexels-shattha-pilabut-38930-135620.jpg"
+                alt="accessory"
+              />
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+        </section>
+      </header>
+      <main>
+        <section class="offers">
+          <div class="offer" id="offer">
+            <h2>Special Offer</h2>
+            <p>Get <span>50% </span>off on your first purchase</p>
+            <button>Shop Now</button>
+          </div>
+          <img
+            src="image/img/لقطة الشاشة 2025-05-18 134646.png"
+            alt="offer"
+            aria-label="img"
+          />
+        </section>
+        <section class="most-popular">
+          <h2 class="title">Most Popular</h2>
+          <div class="products-container" id="most-popular-container">
+          </div>          
+
+        </section>
+        <section class="advertise">
+          <div class="adver">
+            <p>Many offers and discounts are waiting for you</p>
+            <p>Shop the latest fashion trends online</p>
+            <p>Get <span>50% </span>off on your first purchase</p>
+            <button id="adver">Sign Up Now</button>
+          </div>
+          <img src="image/img/offer.jpg" alt="offer" aria-label="img" />
+        </section>
+        <section class="top-seller">
+          <h2 class="title">Top Sellers</h2>
+          <div class="products-container" id="top-sellers-container"></div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p>&copy; 2025 EL-Nasr Clothing. All rights reserved.</p>
+        <p>Contact us at: 123 Main Street, City, Country</p>
+        <p>
+          Follow us on social media:
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </p>
+        <p>Terms and conditions | Privacy policy</p>
+      </footer>
+    </section>
+    <section class="log-in-form" style="display: none" id="login">
+      <h2>Log In</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Log In</button>
+      </form>
+    </section>
+    <section class="sign up" style="display: none" id="signup">
+      <div class="container">
+        <div class="image-section">
+          <h2>welcome to my website</h2>
+          <button class="back-btn">
+            <a href="index.html">Back to website</a>
+          </button>
+        </div>
+        <div class="form-section">
+          <h2>Create an account</h2>
+          <p>
+            Already have an account? <a href="#" class="log" id="logy">Login</a>
+          </p>
+          <form>
+            <div class="input-group">
+              <input type="text" placeholder="First name" required />
+              <input type="text" placeholder="Last name" required />
+            </div>
+            <input type="email" placeholder="Enter your email" required />
+            <input type="password" placeholder="Enter your password" required />
+            <label
+              ><input type="checkbox" required /> I agree to the Terms &
+              Conditions</label
+            >
+            <button type="submit">Create account</button>
+            <div class="social-login">
+              <button class="google">
+                <img
+                  src="https://www.svgrepo.com/show/475656/google-color.svg"
+                  alt="Google"
+                />
+                Google
+              </button>
+              <button class="apple">
+                <img src="social_apple_mac_65.ico" alt="Apple" />
+                Apple
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="product details" style="display: none">
+      <h2>Product Details</h2>
+      <p>Product ID: <span id="product-id"></span></p>
+      <p>Product Name: <span id="product-name"></span></p>
+      <p>Product Price: <span id="product-price"></span></p>
+      <p>Product Category: <span id="product-category"></span></p>
+      <button class="back-btn">Back to Product List</button>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

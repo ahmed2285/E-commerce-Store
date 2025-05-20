@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Details</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to Top, #151d8f, #75c9a9);
+      padding: 35px;
+      color: #333;
+    }
+
+    .product-details {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff4f4;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .product-details img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      height: 350px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    strong {
+      color: #059263;
+    }
+
+    button {
+      margin-top: 25px;
+      background: linear-gradient(to left, #059263, #4af38b);
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #059263, #4af38b);
+    }
+
+    .loading, .error {
+      font-size: 20px;
+      color: #999;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-details" id="product-details">
+    <p class="loading">Loading product details...</p>
+  </div>
+
+  <script>
+   const params = new URLSearchParams(window.location.search);
+const productId = params.get('id');
+const source = params.get('source'); // ← نقرأ المصدر كمان
+
+async function loadProductDetails(id, source) {
+  const container = document.getElementById('product-details');
+  if (!id || !source) {
+    container.innerHTML = '<p class="error">Product not found.</p>';
+    return;
+  }
+
+  let apiUrl = "";
+  if (source === "dummyjson") {
+    apiUrl = `https://dummyjson.com/products/${id}`;
+  } else if (source === "fakestore") {
+    apiUrl = `https://fakestoreapi.com/products/${id}`;
+  } else {
+    container.innerHTML = '<p class="error">Unknown data source.</p>';
+    return;
+  }
+
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error('Failed to fetch product data.');
+    const product = await res.json();
+
+    // نحاول نخلي الكود يتعامل مع الاختلافات بين الـ API
+    const title = product.title || "No Title";
+    const price = product.price || "Unknown";
+    const image = product.image || product.thumbnail || "";
+    const description = product.description || "No description";
+    const brand = product.brand || "Unknown brand";
+    const category = product.category || "Unknown";
+
+    container.innerHTML = `
+      <h1>${title}</h1>
+      <img src="${image}" alt="${title}" />
+      <p><strong>Price:</strong> $${price}</p>
+      <p><strong>Description:</strong> ${description}</p>
+      <p><strong>Brand:</strong> ${brand}</p>
+      <p><strong>Category:</strong> ${category}</p>
+      <button onclick="alert('Product added to cart!')">Add to Cart</button>
+    `;
+  } catch (error) {
+    container.innerHTML = `<p class="error">An error occurred while loading the product. Please try again later.</p>`;
+    console.error(error);
+  }
+}
+
+loadProductDetails(productId, source);
+
+  </script>
+</body>
+</html>
